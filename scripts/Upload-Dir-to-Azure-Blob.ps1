@@ -16,7 +16,7 @@ $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceG
 $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageaccountkey
 
 # Iterate through every
-Get-ChildItem $fp |
+Get-ChildItem $filepath |
 Foreach-Object {
     $blobName = $_.Name
     # Copy the file from local workstation to the Blob container
