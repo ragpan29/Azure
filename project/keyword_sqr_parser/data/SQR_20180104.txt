@@ -1,0 +1,9 @@
+campaign, ad group, search query, impressions, clicks
+Boxes, Group_220, a green box, 100, 1
+Boxes, Group_220, red box, 1000, 0
+Boxes, Group_220, moving box, 500, 0
+Boxes, Group_220, moving box company, 600, 0
+Boxes, Group_220, jewelry box, 10, 0
+Boxes, Group_100, gift box, 400, 1
+Boxes, Group_100, jewelry box, 200, 10
+Boxes, Group_100, jewelry boxes, 100, 30

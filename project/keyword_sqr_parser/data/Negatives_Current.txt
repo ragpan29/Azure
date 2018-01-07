@@ -1,0 +1,4 @@
+Campaign, ad group, keyword, match type, status
+Boxes, Group_220, box, broad, active
+Boxes, Group_100, gift box, exact, active
+Boxes, Group_100, jewelry box, phrase, active
