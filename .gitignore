@@ -1,4 +1,5 @@
 test_data/
 *parameters.json
 *template.json
-
+*.config
+project/*/data/
