@@ -1,5 +1,8 @@
+.idea
+.ipynb_checkpoints
 test_data/
 *parameters.json
 *template.json
 *.config
 project/*/data/
+
