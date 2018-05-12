@@ -1,0 +1,21 @@
+{
+  "cluster_id": "0512-180841-din966",
+  "libraries": [
+    {
+      "pypi": {
+        "package": "azure-storage"
+      }
+    },
+    {
+      "pypi": {
+        "package": "requests"
+      }
+    },
+
+    {
+      "pypi": {
+        "package": "azure-mgmt"
+      }
+    }
+  ]
+}

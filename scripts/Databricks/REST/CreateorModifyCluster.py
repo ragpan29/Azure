@@ -2,7 +2,7 @@ import requests
 import argparse
 import json
 import time
-import InstallPythonLibraries as dbr_library
+import InstallLibraries as dbr_library
 
 def define_auth(token):
     bearer = "Bearer {}".format(token)

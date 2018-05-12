@@ -1,0 +1,14 @@
+{
+  "libraries": [
+    {
+      "pypi": {
+        "package": "azure-storage"
+      }
+    },
+    {
+      "pypi": {
+        "package": "azure-batch"
+      }
+    }
+  ]
+}
