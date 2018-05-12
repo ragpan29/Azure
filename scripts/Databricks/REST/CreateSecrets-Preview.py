@@ -76,21 +76,22 @@ if __name__ == "__main__":
     parser.add_argument('-s', '--scope',  help = "The scope for the set of secrets",required = True)
     parser.add_argument('-l', '--location', help = "The location of your databricks cluster such as eastus2",required = True)
     parser.add_argument('-t', '--token', help = "The access token for your databricks workspace",required = True)
-    parser.add_argument('-n', '--name', nargs = '*', help = "The secret names")
-    parser.add_argument('-v', '--value', nargs = '*', help = "The secret values")
+    parser.add_argument('-p', '--pair', nargs = '+', action = "append", help = "The secret key and value, in that order", required = True)
 
     args = parser.parse_args()
 
     if args.scope is None:
         raise AttributeError ("Scope Not Defined")
     
-    if args.name is None or args.value is None:
+    if args.pair is None:
         raise AttributeError ("The secret name or value hasn't been defined")
     
-    if len(args.name) != len(args.name):
-        raise KeyError("There must be an equal number of keys and values")
+    secret_lens = [len(l) for l in args.pair]
+
+    if min(secret_lens) < 2 or max(secret_lens) > 2:
+        raise KeyError("There is an unbalanced secret name and value")
     
-    secrets_values = {args.name[idx]: args.value[idx] for idx in range(len(args.name))}
+    secrets_values = {k: v for k,v in args.pair}
 
     try:
         results = create_scope(args.scope, args.token, args.location)
