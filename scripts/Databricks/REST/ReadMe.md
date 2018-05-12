@@ -152,6 +152,7 @@ If `.\DataBricksFiles` follows this structure...
     |-- RootLevelJob
 
 Then your Databricks workspace will look like...
+
     (root)/
     |--WeeklyJobs/
     |  |--Invoicing/
