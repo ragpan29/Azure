@@ -80,6 +80,7 @@ The CreateorModifyCluster module uses the InstallLibraries module but InstallLib
     python InstallLibraries.py -c library-config-with-id.json -t ACCESSTOKEN -l LOCATION
 
 The library-config-with-id.json file looks like:
+
     {
     "cluster_id": "TheUniqueClusterID",
     "libraries": [
@@ -164,3 +165,10 @@ Then your Databricks workspace will look like...
 The folder you point it at will become the root in Databricks.
 
 Note that if a folder doesn't exist in your workspace, one will be created.  If the uploaded notebook fails to upload, the folder may have already been created and will not be removed due to a failed upload.
+
+## Downloading Notebooks
+
+The latest version will download a Databricks Notebook as a Python file.  At this time, you can only download one file at a time, since Databricks forces you to use their DBC file format when downloading directories.
+
+    python DownloadNotebook.py -t ACCESSTOKEN -l LOCATION --source "/My/Notebook/Path" --destination .\My\Notebook\Local\Destination
+
