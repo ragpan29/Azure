@@ -1,6 +1,9 @@
 import argparse
 
 if __name__ == "__main__":
+    """
+    Find and replace values in a file based on a tab delimited file of EXISTING <TAB> REPLACEMENT.
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input", help = "The input file to be transfomred", required = True)
     parser.add_argument("-r", "--replacements", help = "The tab delimited replacement file to be used", required = True)
@@ -15,8 +18,6 @@ if __name__ == "__main__":
         rep_list = [x.split("\t") for x in rep_contents]
     
     for pat in rep_list:
-        print(pat)
-        print(len(pat))
         instances = file_contents.count(pat[0])
         print("Found {} instances of {} and replacing it with {}".format(instances, pat[0], pat[1]))
         file_contents = file_contents.replace(pat[0], pat[1])
