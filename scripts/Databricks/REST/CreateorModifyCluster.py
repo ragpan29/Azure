@@ -67,8 +67,12 @@ def list_cluster(token, location):
     URI = define_uri(location,"list")
 
     r = requests.get(URI, headers = hdr)
-
-    return r.json()["clusters"]
+    results = None
+    try:
+        results = r.json()["clusters"]
+    except KeyError:
+        results = []
+    return results
 
 def version_cluster(token, location):
     hdr = define_auth(token)
