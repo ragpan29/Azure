@@ -3,6 +3,7 @@ import argparse
 import json
 import time
 import InstallLibraries as dbr_library
+import sys
 
 def define_auth(token):
     bearer = "Bearer {}".format(token)
@@ -69,6 +70,13 @@ def list_cluster(token, location):
 
     return r.json()["clusters"]
 
+def version_cluster(token, location):
+    hdr = define_auth(token)
+    URI = define_uri(location,"spark-versions")
+
+    r = requests.get(URI, headers = hdr)
+    return r.json()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -78,8 +86,14 @@ if __name__ == "__main__":
     parser.add_argument('--libraries', help = "The filepath to the json containing the libraries to install")
     parser.add_argument('--startup', help="Start the cluster after modification (starts automatically when created). Required for libary modification", action="store_true")
     parser.add_argument('--shutdown', help="Shut down the cluster after library installation.", action="store_true")
+    parser.add_argument('--versions', help="The versions of spark available", action="store_true")
+    parser.add_argument('--id', help="The only output should be the new / existing id", action="store_true")
 
     args = parser.parse_args()
+
+    if args.versions:
+        print(json.dumps(version_cluster(args.token, args.location), indent=2))
+        sys.exit()
 
     with open(args.config, 'r') as config_conn:
         config_json = json.load(config_conn)
@@ -96,12 +110,14 @@ if __name__ == "__main__":
             action = "edit"
             cluster_id = cluster["cluster_id"]
             config_json["cluster_id"] = cluster_id
+            print("Cluster ID Updated:{}".format(cluster_id))
             break
         else:
             pass
+    print("Paste update:{}".format(cluster_id))
     
     print("ACTION:{} for cluster named {}".format(action, config_json["cluster_name"]))
-    cluster_id = manage_cluster(config_json, args.token, args.location,action)
+    cluster_id = manage_cluster(config_json, args.token, args.location,action) or cluster_id
 
     if args.startup:
         print("Starting up cluster {}".format(cluster_id))
@@ -121,3 +137,6 @@ if __name__ == "__main__":
     if args.shutdown:
         print("Shutting down cluster {}".format(cluster_id))
         delete_cluster(cluster_id, args.token, args.location)
+    
+    if args.id:
+        print(cluster_id)

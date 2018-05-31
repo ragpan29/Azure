@@ -73,6 +73,13 @@ If you want to modify and existing cluster and add new libraries to it, it gets 
         python CreateorModifyCluster.py -c modified-cluster-config.json -t ACCESSTOKEN -l LOCATION --libraries library-config-no-id.json --startup --shutdown
 
 
+### Getting the resulting cluster id
+
+You can use the `--id` switch to have the last line of output represent the cluster id.  You might use this cluster id for later consumption.  I would store the last line as a variable.
+
+        clusterid=$(python CreateorModifyCluster.py -c basic-cluster-config.json -t ACCESSTOKEN -l LOCATION --id | tail -1)
+
+
 ## Installing Libraries
 
 The CreateorModifyCluster module uses the InstallLibraries module but InstallLibraries can be used on its own.
