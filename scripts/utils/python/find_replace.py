@@ -19,8 +19,8 @@ if __name__ == "__main__":
     
     for pat in rep_list:
         instances = file_contents.count(pat[0])
-        print("Found {} instances of {} and replacing it with {}".format(instances, pat[0], pat[1]))
-        file_contents = file_contents.replace(pat[0], pat[1])
+        print("Found {} instances of {} and replacing it with {}".format(instances, pat[0], pat[1].strip()))
+        file_contents = file_contents.replace(pat[0], pat[1].strip())
     
     out_file = args.input
     if args.output is not None:
