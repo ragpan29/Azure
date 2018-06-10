@@ -1,0 +1,8 @@
+{
+  "cluster_id": "0519-001610-tacky230",
+  "libraries": [
+    {
+      "jar": "dbfs:/mnt/avro/photon/photon-all_2.10-1.0.0.jar"
+    }
+  ]
+}
