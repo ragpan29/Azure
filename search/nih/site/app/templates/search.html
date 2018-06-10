@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>{{ search_name }}</h1>
+        <p>Search for a topic to see relevant Grants and Promega products.</p>
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.search(size=32) }}
+            {{ form.submit }}
+        </form>
+    </div>
+</div>
+{% if submitted %}
+<div class="row">
+        <div class="col-md-12">
+            <h3>Results for "{{ query }}"...</h3>
+        </div>
+</div>
+{% if nih|length == 0 and prod|length ==0 %}
+<div class="row">
+        <div class="col-md-12">
+           <p>Sorry.  It looks like there aren't any resutls for your query.  Please try broadening your search.</p>
+        </div>
+</div>
+{% endif %}
+{% endif %}
+{% if nih or prod %}
+<div class="row">
+    <div class="col-md-6">
+        <h3>Grant Results ({{nih|length}})</h3>
+        <ul>
+            {% for grant in nih %}
+            <li><a href="{{ url_for('grant_detail',grant_key= grant.projectnumber) }}">{{ grant.projecttitle }}</a>
+                <ul>
+                    <li>Project #: {{ grant.projectnumber }}</li>
+                    <li>Org: {{ grant.awardeeorg }}</li>
+                    <li>Leader: {{ grant.projectleader }}</li>
+                </ul>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h3>Product Results ({{prod|length}})</h3>
+        <ul>
+            {% for product in prod %}
+            <li><a href="#">{{ product.productid }} - {{ product.productname }}</a>
+                <ul>
+                    <li>{{ product.producttagline }}</li>
+                </ul>
+                </li>
+                
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

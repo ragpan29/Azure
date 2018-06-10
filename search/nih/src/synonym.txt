@@ -1,0 +1,3 @@
+ribonucliec, ribonucleic => RNA
+deoxyribonucleic, dioxyribonucleic => DNA
+homework => coursework

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if grant is none %}
+<div class="row">
+        <div class="col-md-12">
+            <h1>No Grant Results</h1>
+        </div>
+    </div>
+<div class="row">
+        <div class="col-md-12">
+            <h3>Something Went Wrong...</h3>
+            <p>Please head back to the <a href="{{url_for('search')}}">seach page</a>.</p>
+        </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>Grant Details for {{ grant.projectnumber }}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>Grant Results</h3>
+        <ul>
+            <li>{{ grant.projecttitle }}</li>
+            <li>Project #: {{ grant.projectnumber }}</li>
+            <li>Org: {{ grant.awardeeorg }}</li>
+            <li>Leader: {{ grant.projectleader }}</li>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-12">
+        <h3>Abstract</h3>
+        <p>{{ grant.abstract }}</p>
+        
+    </div>
+</div>
+{% endif %}
+
+{% if key_terms is not none %}
+<div class="row">
+    <div class="col-md-12">
+        <h4>Key Phrases in Abstract:</h4>
+        <p>{{ key_terms }}</p>
+    </div>
+    <div class="col-md-12">
+    <h3>Product Results ({{related_prods|length}})</h3>
+        <ul>
+            {% for product in related_prods %}
+            <li><a href="#">{{ product.productid }} - {{ product.productname }}</a></li>
+                <ul>
+                    <li>{{ product.producttagline }}</li>
+                </ul>
+            </li>
+                
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
