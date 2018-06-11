@@ -137,7 +137,7 @@ The latest version works only for **python (.py) and IPython notebooks (.ipynb)*
 
 ### Upload a Single File
 
-    python UploadNotebook.py -t ACCESSTOKEN -l LOCATION -f ExampleScript.py --clouddir "/MyScripts"
+    python UploadNotebook.py -t ACCESSTOKEN -l LOCATION -f ExampleScript.py --clouddir "MyScripts"
 
 * This uploads ExampleScript.py to /MyScripts/ExampleScript
 
