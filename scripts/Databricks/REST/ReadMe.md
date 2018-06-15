@@ -104,6 +104,13 @@ The library-config-with-id.json file looks like:
     ]
     }
 
+## Uninstalling Libraries
+
+Using the same configuration file, you can use the `--uninstall` switch to queue an uninstall of the libraries mentioned in the same config file.  **Note**: The uninstall requires a cluster restart to take into effect.  You'll see a status of `UNINSTALL_ON_RESTART`.
+
+    python InstallLibraries.py -c library-config-with-id.json -t ACCESSTOKEN -l LOCATION --uninstall
+
+
 ### Checking the Status of Installation
 
 Another use for the InstallLibraries module is to quickly check the status of package installation.  The following command returns a JSON print-out to the screen of each package and their installation status.

@@ -13,7 +13,7 @@ def define_auth(token):
 def define_uri(location,noun,verb):
     return "https://{}.azuredatabricks.net/api/2.0/{}/{}".format(location,noun,verb)
 
-def install_library_from_config(config_json, token, location, noun, verb):
+def modify_library_from_config(config_json, token, location, noun, verb):
     config_txt = json.dumps(config_json)
     hdr = define_auth(token)
     URI = define_uri(location, noun, verb)
@@ -21,9 +21,12 @@ def install_library_from_config(config_json, token, location, noun, verb):
     r = requests.post(URI, headers = hdr, data = config_txt)
 
     if r.status_code == 200:
-        print("Successfully queued installation of libraries")
+        if verb == "uninstall":
+            print("Successfully queued uninstall of libraries.  Will require a cluster restart.")
+        else:
+            print("Successfully queued installation of libraries")
     elif r.status_code == 400:
-        print("Make sure the cluster is either starting or running to install libraries.")
+        print("Make sure the cluster is either starting or running to install or uninstall libraries.")
         print(json.dumps(r.json(), indent=2))
 
 def check_status_from_id(cluster_id, token, location, noun, verb):
@@ -41,6 +44,7 @@ if __name__ == "__main__":
     parser.add_argument('-c', '--config', help = "The filepath of the JSON configuration file")
     parser.add_argument('--id', help = "The cluster id to be used in looking up the status")
     parser.add_argument('--status', help = "Look at the status of your installations for given configuration file", action='store_true')
+    parser.add_argument('--uninstall', help = "Instead of installing, uninstall based on the given config", action='store_true')
 
     args = parser.parse_args()
 
@@ -56,4 +60,8 @@ if __name__ == "__main__":
             cluster_id = config_json["cluster_id"]
         check_status_from_id(cluster_id, args.token, args.location, "libraries", "cluster-status")
     else:
-        install_library_from_config(config_json, args.token, args.location,"libraries","install")
+        verb = "install"
+        if args.uninstall:
+            verb = "uninstall"
+        
+        modify_library_from_config(config_json, args.token, args.location,"libraries",verb)
