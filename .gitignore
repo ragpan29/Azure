@@ -5,4 +5,11 @@ test_data/
 *template.json
 *.config
 project/*/data/
+env/
 
+# Removing Azure ML Workbench files
+.azuremlhistory_git
+.ipynb_checkpoints
+azureml-logs
+*.dprep.user
+.azureml/

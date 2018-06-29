@@ -1,0 +1,30 @@
+{
+    "input": {
+        "input_df": {
+            "swagger": {
+                "items": {
+                    "properties": {
+                        "x2": {
+                            "format": "int64",
+                            "type": "integer"
+                        },
+                        "x1": {
+                            "format": "int64",
+                            "type": "integer"
+                        }
+                    },
+                    "type": "object"
+                },
+                "example": [
+                    {
+                        "x2": 5,
+                        "x1": 10
+                    }
+                ],
+                "type": "array"
+            },
+            "internal": "gANjYXp1cmVtbC5hcGkuc2NoZW1hLnBhbmRhc1V0aWwKUGFuZGFzU2NoZW1hCnEAKYFxAX1xAihYBQAAAHNoYXBlcQNLAUsChnEEWAoAAABzY2hlbWFfbWFwcQV9cQYoWAIAAAB4MnEHY251bXB5CmR0eXBlCnEIWAIAAABpOHEJSwBLAYdxClJxCyhLA1gBAAAAPHEMTk5OSv////9K/////0sAdHENYlgCAAAAeDFxDmgLdVgMAAAAY29sdW1uX25hbWVzcQ9dcRAoaA5oB2VYDAAAAGNvbHVtbl90eXBlc3ERXXESKGgLaAtldWIu",
+            "type": 3
+        }
+    }
+}
