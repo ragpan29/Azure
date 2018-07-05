@@ -1,0 +1,233 @@
+{
+  "luis_schema_version": "3.0.0",
+  "versionId": "0.1",
+  "name": "Helpdesk",
+  "desc": "Helpdesk Mitigation",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "checkStatus"
+    },
+    {
+      "name": "createServiceTicket"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "passwordReset"
+    }
+  ],
+  "entities": [
+    {
+      "name": "application",
+      "roles": []
+    }
+  ],
+  "composites": [],
+  "closedLists": [],
+  "patternAnyEntities": [],
+  "regex_entities": [
+    {
+      "name": "ipaddress",
+      "regexPattern": "\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b",
+      "roles": [
+        "IPAddress"
+      ]
+    }
+  ],
+  "prebuiltEntities": [],
+  "model_features": [],
+  "regex_features": [],
+  "patterns": [],
+  "utterances": [
+    {
+      "text": "can you issue a ticket for me",
+      "intent": "createServiceTicket",
+      "entities": []
+    },
+    {
+      "text": "app x performance",
+      "intent": "checkStatus",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 0,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "health check on ip 127.0.0.1",
+      "intent": "checkStatus",
+      "entities": []
+    },
+    {
+      "text": "health of active directory server",
+      "intent": "checkStatus",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 10,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "how do i reset my password?",
+      "intent": "passwordReset",
+      "entities": []
+    },
+    {
+      "text": "i don't know my active directory credentials",
+      "intent": "passwordReset",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 16,
+          "endPos": 31
+        }
+      ]
+    },
+    {
+      "text": "i don't know my app x password",
+      "intent": "passwordReset",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 16,
+          "endPos": 22
+        }
+      ]
+    },
+    {
+      "text": "i don't know my sql server login",
+      "intent": "passwordReset",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 16,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "i forgot my password",
+      "intent": "passwordReset",
+      "entities": []
+    },
+    {
+      "text": "i forgot my windows password",
+      "intent": "passwordReset",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 12,
+          "endPos": 18
+        }
+      ]
+    },
+    {
+      "text": "i need to open a ticket",
+      "intent": "createServiceTicket",
+      "entities": []
+    },
+    {
+      "text": "i'd like to start a ticket for creating a new application",
+      "intent": "createServiceTicket",
+      "entities": []
+    },
+    {
+      "text": "is app x running slow?",
+      "intent": "checkStatus",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 3,
+          "endPos": 9
+        }
+      ]
+    },
+    {
+      "text": "is sql server down?",
+      "intent": "checkStatus",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 3,
+          "endPos": 12
+        }
+      ]
+    },
+    {
+      "text": "open ticket for sql server",
+      "intent": "createServiceTicket",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 16,
+          "endPos": 25
+        }
+      ]
+    },
+    {
+      "text": "performance check on app x",
+      "intent": "checkStatus",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 21,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "performance of active directory server",
+      "intent": "checkStatus",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 15,
+          "endPos": 30
+        }
+      ]
+    },
+    {
+      "text": "ping 127.0.0.1",
+      "intent": "checkStatus",
+      "entities": []
+    },
+    {
+      "text": "ping ip 127.0.0.1",
+      "intent": "checkStatus",
+      "entities": []
+    },
+    {
+      "text": "please create a ticket for app x",
+      "intent": "createServiceTicket",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 27,
+          "endPos": 33
+        }
+      ]
+    },
+    {
+      "text": "what's the status of app x?",
+      "intent": "checkStatus",
+      "entities": [
+        {
+          "entity": "application",
+          "startPos": 21,
+          "endPos": 27
+        }
+      ]
+    },
+    {
+      "text": "would you please reset my password?",
+      "intent": "passwordReset",
+      "entities": []
+    }
+  ]
+}
