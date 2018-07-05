@@ -36,20 +36,16 @@
 
 ### Local Environment Setup
 
-* Create an environment where the model will be deployed to.
- * For testing purposes, you can setup a local docker installation.
- * This will create two resource groups
- * One will be empty and one hold your Container Registry
+Before you deploy to your Container Service, you can deploy it a local Docker instance.
+
+On the command line, you'll need to...
+* Setup an environment (keep it local by not using the `--cluster` switch).
+* Set the environment.
+* Set the model management account.
 
        az ml env setup -n <new deployment environment name> --location <e.g. eastus2> -g <resource group name>
-
-* You'll also set the environment for deployment
-
-      az ml env set -n <deployment environment name> -g <existing resource group name>
-
-* Set the model management account so that the deployed model is associate to that account.
-
-      az ml account modelmanagement set -n <youracctname> -g <yourresourcegroupname>
+       az ml env set -n <deployment environment name> -g <existing resource group name>
+       az ml account modelmanagement set -n <youracctname> -g <yourresourcegroupname>
 
 * Update the dependencies in the `aml_config/conda_dependencies.yml`
  * For example, adding Scikit-Learn
@@ -81,7 +77,7 @@
 ### Cluster Environment Setup
 
 * Once you're ready to deploy for real, you'd create a cluster environment using the `--cluster` switch.
- * This will create another resource group that contains your ACS VMs, NICs, VNET, Load Balance, Availability Set, App Insights, and Container Service.
+* This will create another resource group that contains your ACS VMs, NICs, VNET, Load Balance, Availability Set, App Insights, and Container Service.
 
         az ml env setup -n <new Cloud deployment env name> --location <e.g. eastus2>  -g <resource group name> --cluster
         az ml env set -n <Cloud deployment env name> -g <existing resource group name>
@@ -93,7 +89,7 @@
       az ml image list
       az ml service create realtime --image-id <image ID> -n <model service name>
 
- * When the model is deployed, you can use rest api calls.  This example script can be used to call the URL using a key.  Both are provided in the portal or the key can be found via calling `az ml service list realtime` to get the service id and then calling `az ml service key realtime -i <service id>`.
+ * When the model is deployed, you can use rest api calls.  This example script can be used to call the URL using a key.  Both are provided in the portal or the key can be found via calling `az ml service list realtime` to get the service id and then calling `az ml service keys realtime -i <service id>`.
 
        import requests
        import json
@@ -113,3 +109,7 @@
 
            resp = requests.post(args.url, body, headers=headers)
            print(json.loads(resp.json()))
+
+* Alternatively, you can call the `az ml service run realtime` on the command line with the model id.
+
+      az ml service run realtime -i <model id> -d "{\"input_df\": [{\"column\": value}]}"
