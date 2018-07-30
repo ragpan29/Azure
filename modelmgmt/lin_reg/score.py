@@ -23,7 +23,9 @@ def run(input_df):
     pred = model.predict(input_df)
     return json.dumps(str(pred))
 
-def main():
+# Run this once to generate the scehma for the swagger API
+# Gets uploaded with the deployment
+def create_schema():
     # This is used to define the schema and example
     df = pandas.DataFrame(data=[[10,5]],columns=["x1","x2"])
 
@@ -46,4 +48,4 @@ def main():
     print("Schema generated")
 
 if __name__ == "__main__":
-    main()
+    create_schema()

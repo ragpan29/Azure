@@ -1,0 +1,37 @@
+{
+    "input": {
+        "input_df": {
+            "internal": {
+                "fields": [
+                    {
+                        "name": "abstract",
+                        "type": "string",
+                        "nullable": true,
+                        "metadata": {}
+                    }
+                ],
+                "type": "struct"
+            },
+            "type": 2,
+            "swagger": {
+                "type": "array",
+                "items": {
+                    "properties": {
+                        "abstract": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "example": [
+                    {
+                        "abstract": "this grant will provide funding for biostatistics and neuroscience"
+                    },
+                    {
+                        "abstract": "this is an example abstract"
+                    }
+                ]
+            }
+        }
+    }
+}
