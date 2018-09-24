@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<form method="POST" action="" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <p>{{ form.phrase.label }}{{ form.phrase }}</p>
+    <p>{{ form.from_lang.label }}{{ form.from_lang }}</p>
+    <p>{{ form.to_lang.label }}{{ form.to_lang }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% if results %}
+<div class="row">
+    <div class="col-md-6">
+        <h2>Original Content</h2> 
+        <p>{{original}}</p>
+    </div>
+    <div class="col-md-6">
+        <h2>Results</h2> 
+        <ul>
+            {% for option in results %}
+            <li>{{option.prefixWord}} {{ option.displayTarget }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col-md-12">
+        {{ error }}
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

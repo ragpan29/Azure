@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Languages</h1>
+
+{% if results %}
+<div class="row">
+    <div class="col-md-6">
+        <h2>What can be translated from and to?</h2> 
+        <ol>
+            {% for lang in results %}
+            <li>{{lang}} - {{results[lang]['name']}} </li>
+            {% endfor %}
+        </ol>
+    </div>
+    <div class="col-md-6">
+        <h2>What can be translated from and to?</h2> 
+        <p>
+        {% for lang in results %}
+            ('{{lang}}','{{results[lang]['name']}}'),<br/>
+        {% endfor %}
+    </p>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

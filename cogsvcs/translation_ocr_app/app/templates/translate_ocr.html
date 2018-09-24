@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<form method="POST" action="" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <p>{{ form.upload.label }}{{ form.upload }}</p>
+    <p>{{ form.mode.label }}{{ form.mode }}</p>
+    <p>{{ form.from_lang.label }}{{ form.from_lang }}</p>
+    <p>{{ form.to_lang.label }}{{ form.to_lang }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% if results %}
+<div class="row">
+    <div class="col-md-6">
+        <h2>Original Content</h2> 
+        <p>{{original}}</p>
+    </div>
+    <div class="col-md-6">
+        <h2>Translated Content</h2> 
+        <h5>From: {{results.language.language}} ({{ 100*results.language.score|round(1)|int}}%)</h5>
+        <p>{{results.content}}</p>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
