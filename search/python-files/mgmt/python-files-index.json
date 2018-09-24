@@ -1,0 +1,21 @@
+{
+    "name":"pyfk",
+    "fields":[
+        {"name":"id","type": "Edm.String", "key":true, "retrievable":true, "sortable":false, "searchable":false, "facetable":false},
+        {"name":"content", "type": "Edm.String", "retrievable":true, "sortable":false, "searchable":true, "facetable":false},
+        {"name":"entities", "type": "Collection(Edm.String)","retrievable":true, "sortable":false, "searchable":true},
+        {"name":"parentDoc", "type": "Edm.String","retrievable":true, "sortable":true, "searchable":true},
+        {"name":"pageNum", "type": "Edm.Int32", "retrievable":true, "sortable":true, "searchable":false, "facetable":false},
+        {"name":"docType", "type": "Edm.String", "retrievable":true, "sortable":true, "searchable":false, "facetable":true}
+    ],
+    "corsOptions": {
+        "allowedOrigins": [ "*" ]
+    },
+    "suggesters": [
+        {
+            "name": "sg-python",
+            "searchMode": "analyzingInfixMatching",
+            "sourceFields": [ "entities" ]
+        }
+    ]
+}
