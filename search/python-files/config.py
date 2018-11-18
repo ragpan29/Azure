@@ -15,8 +15,6 @@ class Config(object):
             pw = pw
         )
     
-
-    
     TEXTANALYTICS_KEY = os.environ.get('TEXTANALYTICS_KEY')
     TEXTANALYTICS_URL = os.environ.get('TEXTANALYTICS_URL')
 
@@ -33,6 +31,9 @@ class Config(object):
     BLOB_ACCT_NAME = os.environ.get("BLOB_ACCT_NAME")
     BLOB_KEY = os.environ.get("BLOB_KEY")
     BLOB_URL = os.environ.get("BLOB_URL")
+    BLOB_DISPLAY_CONTAINER = os.environ.get("BLOB_DISPLAY_CONTAINER")
+    BLOB_OCR_RAW_CONTAINER = os.environ.get("BLOB_OCR_RAW_CONTAINER")
+    BLOB_SAS = os.environ.get("BLOB_SAS")
     
     UPLOAD_FOLDER = os.path.join(basedir, 'app', 'uploads')
 

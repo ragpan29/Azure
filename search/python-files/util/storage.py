@@ -25,7 +25,7 @@ def save_image(request, filefield):
     file_name_secure = secure_filename(file_name_rand)
 
     content = filestorage.read()
-    blob_client.create_blob_from_bytes(container_name="ocrimages", blob_name=file_name_secure, blob=content)
+    blob_client.create_blob_from_bytes(container_name=appvar.config["BLOB_OCR_RAW_CONTAINER"], blob_name=file_name_secure, blob=content)
     
     return file_name_secure
 
@@ -39,10 +39,10 @@ def generate_img_url(blob_name):
     )
 
     sas_sig_param = sas_sig.generate_blob(
-            container_name = "ocrimages",
+            container_name = appvar.config["BLOB_OCR_RAW_CONTAINER"],
             blob_name = blob_name, permission=read_write, 
             expiry=datetime.utcnow()+timedelta(0,60*30,0), 
             start=datetime.utcnow(), id=None
     )
 
-    return "https://{}.blob.core.windows.net/ocrimages/{}?{}".format(appvar.config["BLOB_ACCT_NAME"], blob_name, sas_sig_param)
+    return "https://{}.blob.core.windows.net/{}/{}?{}".format(appvar.config["BLOB_OCR_RAW_CONTAINER"], appvar.config["BLOB_ACCT_NAME"], blob_name, sas_sig_param)

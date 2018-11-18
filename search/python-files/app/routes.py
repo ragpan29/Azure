@@ -71,15 +71,15 @@ def search_page():
     results = []
 
     if form.validate_on_submit():
-        sas_token = "?st=2018-09-01T19%3A28%3A09Z&se=2018-09-10T19%3A28%3A00Z&sp=rl&sv=2017-07-29&sr=c&sig=A528M%2F9B%2FUk%2FioIUAlVrHsDJF6iea8klGsG43jnWtRg%3D"
+        sas_token = appvar.config["BLOB_SAS"]
         query = form.search.data
         query_string = {'search':quote_plus(query.strip()), "highlight":"content"}
         results = search.query_index(query_string)
 
         # Create Image URL 
         for doc in results:
-            if doc["docType"] == "Batch Record - Handwritten":
-                url = appvar.config["BLOB_URL"]+"privateapp"+"/batchrecords/"+doc["parentDoc"]+sas_token
+            if doc["docType"] == "Handwritten":
+                url = appvar.config["BLOB_URL"]+appvar.config["BLOB_CONTAINER"]+"/"+doc["parentDoc"]+sas_token
                 doc.update({"img_url":url})
             
 

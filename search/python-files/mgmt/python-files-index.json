@@ -1,7 +1,8 @@
 {
-    "name":"pyfk",
+    "name":"<TOBEFILLEDIN>",
     "fields":[
         {"name":"id","type": "Edm.String", "key":true, "retrievable":true, "sortable":false, "searchable":false, "facetable":false},
+        {"name":"filepath","type": "Edm.String", "retrievable":true, "sortable":false, "searchable":false, "facetable":false},
         {"name":"content", "type": "Edm.String", "retrievable":true, "sortable":false, "searchable":true, "facetable":false},
         {"name":"entities", "type": "Collection(Edm.String)","retrievable":true, "sortable":false, "searchable":true},
         {"name":"parentDoc", "type": "Edm.String","retrievable":true, "sortable":true, "searchable":true},

@@ -9,20 +9,23 @@ A flask app that mimics the functionality of the JFK Files.
  * Deploy Blob Storage Account
  * Deploy Computer Vision API for OCR
 
-You'll need to set up these environment variables:
+Youll need to set up these environment variables:
 
-    $env:TEXTANALYTICS_KEY=''
-    $env:TEXTANALYTICS_URL='https://<LOCATION>.api.cognitive.microsoft.com/text/analytics/v2.0/'
+    set TEXTANALYTICS_KEY=
+    set TEXTANALYTICS_URL=
 
-    $env:SEARCH_NAME=''
-    $env:SEARCH_KEY=''
-    $env:SEARCH_QUERY_KEY=''
-    $env:SEARCH_INDEX_NAME = ''
-    $env:SEARCH_API = '2017-11-11'
+    set SEARCH_NAME=
+    set SEARCH_KEY=
+    set SEARCH_QUERY_KEY=
+    set SEARCH_INDEX_NAME=
+    set SEARCH_API=
 
-    $env:BLOB_ACCT_NAME = ''
-    $env:BLOB_KEY = ''
-    $env:BLOB_URL = 'https://<blob-acct-name>.blob.core.windows.net/'
+    set BLOB_ACCT_NAME=
+    set BLOB_DISPLAY_CONTAINER=
+    set BLOB_OCR_RAW_CONTAINER=
+    set BLOB_KEY=
+    set BLOB_URL=
+    set BLOB_SAS=
 
-    $env:VISION_KEY = ''
-    $env:VISION_URL = 'https://<LOCATION>.api.cognitive.microsoft.com/vision/v2.0/'
+    set VISION_KEY=
+    set VISION_URL=

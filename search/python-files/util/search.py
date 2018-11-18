@@ -16,7 +16,7 @@ def search_url(action=None):
         output_url = ''.join([URL, '/indexes/',INDEX_NAME,'?api-version=',API])
     else:
         output_url = ''.join([URL, '/indexes/',INDEX_NAME, action,'?api-version=',API])
-
+    print(output_url)
     return output_url
 
 def query_index(params):
